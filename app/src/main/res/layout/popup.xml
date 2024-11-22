@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minWidth="300dp"
+    android:minHeight="400dp"
+    android:padding="16dp"
+    android:background="@drawable/popup_background">
+
+    <!-- Botón "X" para cerrar -->
+    <Button
+        android:id="@+id/popupCloseButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:text="X"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <!-- Contenedor principal -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="16dp"
+        android:background="@drawable/popup_background">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
+
+            <!-- Etiqueta del nombre -->
+            <TextView
+                android:id="@+id/popupText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:text="Nombre del Hábito:"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Caja de texto para el nombre -->
+            <EditText
+                android:id="@+id/etHabitName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingresa el nombre"
+                android:inputType="text"
+                android:background="@android:drawable/editbox_background"
+                android:padding="12dp"
+                android:layout_marginTop="8dp" />
+
+            <!-- Etiqueta de la descripción -->
+            <TextView
+                android:id="@+id/descriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:layout_marginTop="16dp"
+                android:text="Descripción:"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Caja de texto para la descripción -->
+
+            <!-- Botón para guardar -->
+            <EditText
+                android:id="@+id/ehabitDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@android:drawable/edit_text"
+                android:hint="Descripción del hábito"
+                android:inputType="textMultiLine"
+                android:lines="4"
+                android:maxLines="6"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btnSaveHabit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Guardar"
+                android:backgroundTint="@android:color/holo_green_dark"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>
