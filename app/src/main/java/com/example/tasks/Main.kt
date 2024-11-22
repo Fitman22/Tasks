@@ -10,12 +10,16 @@ import androidx.activity.ComponentActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class Main : ComponentActivity() {
 
     private val habitsList = mutableListOf<Habit>()
     private lateinit var adapter: HabitAdapter
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.index)
@@ -66,26 +70,33 @@ class Main : ComponentActivity() {
 
         itemTouchHelper.attachToRecyclerView(habitsRecyclerView)
     }
-
     // Método para recibir el resultado de la actividad AddHabitActivity (ya sea al agregar o editar)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             val habitName = data?.getStringExtra("newHabitName") ?: return
             val habitDescription = data.getStringExtra("newHabitDescription") ?: return
-            val habitId = data.getIntExtra("habitId", -1) // Asegúrate de obtener el id también
+            val habitId = data.getIntExtra("habitId", -1)
 
-            if (habitId != -1) {
-                if (requestCode == REQUEST_ADD_HABIT) {
-                    // Agregar un nuevo hábito
-                    habitsList.add(Habit(habitId, habitName, habitDescription))
-                    adapter.notifyItemInserted(habitsList.size - 1)
-                } else if (requestCode == REQUEST_EDIT_HABIT) {
-                    // Buscar el hábito por id y actualizarlo
-                    val habitPosition = habitsList.indexOfFirst { it.id == habitId }
-                    if (habitPosition >= 0) {
-                        habitsList[habitPosition] = Habit(habitId, habitName, habitDescription)
-                        adapter.notifyItemChanged(habitPosition)
+            if (requestCode == REQUEST_ADD_HABIT) {
+                val newHabit = Habit(name = habitName, description = habitDescription)
+                CoroutineScope(Dispatchers.IO).launch {
+
+                    withContext(Dispatchers.Main) {
+                        habitsList.add(newHabit)
+                        adapter.notifyItemInserted(habitsList.size - 1)
+                    }
+                }
+            } else if (requestCode == REQUEST_EDIT_HABIT && habitId != -1) {
+                val updatedHabit = Habit(id = habitId, name = habitName, description = habitDescription)
+                CoroutineScope(Dispatchers.IO).launch {
+
+                    withContext(Dispatchers.Main) {
+                        val position = habitsList.indexOfFirst { it.id == habitId }
+                        if (position >= 0) {
+                            habitsList[position] = updatedHabit
+                            adapter.notifyItemChanged(position)
+                        }
                     }
                 }
             }
