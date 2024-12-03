@@ -7,4 +7,13 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Color_Secundario">#D1D8E0</color>
+    <color name="Titulos">#2E3A59</color>
+    <color name="Texto_Secundario">#8E9B9D</color>
+    <color name="Principal">#F4F4F9</color>
+    <color name="Botones">#4A90E2</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
 </resources>

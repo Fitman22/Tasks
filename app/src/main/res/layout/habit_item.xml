@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:elevation="4dp"
+    app:cardCornerRadius="8dp"
+    android:backgroundTint="@color/Principal">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Nombre del hábito -->
+        <TextView
+            android:id="@+id/habitName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre del hábito"
+            android:textColor="@color/Titulos"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Descripción del hábito -->
+        <TextView
+            android:id="@+id/habitDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Descripción del hábito"
+            android:textColor="@color/Titulos"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Frecuencia del hábito (Diariamente o Semanalmente) -->
+        <TextView
+            android:id="@+id/habitFrequency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Frecuencia: Diariamente"
+            android:textColor="@color/Titulos"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Días seleccionados (Solo si la frecuencia es Semanal) -->
+        <TextView
+            android:id="@+id/habitSelectedDays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Días: Lunes, Miércoles, Viernes"
+            android:textColor="@color/Titulos"
+            android:textSize="14sp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone" /> <!-- Oculto por defecto, se muestra solo si es semanal -->
+
+        <!-- Hora del hábito -->
+        <TextView
+            android:id="@+id/habitTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hora: 08:00 AM"
+            android:textColor="@color/Titulos"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

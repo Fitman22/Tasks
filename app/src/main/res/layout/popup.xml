@@ -1,37 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F4F4F9"
     android:minWidth="300dp"
     android:minHeight="400dp"
-    android:padding="16dp"
-    android:background="@drawable/popup_background">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <!-- Botón "X" para cerrar -->
-    <Button
-        android:id="@+id/popupCloseButton"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="end"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:text="X"
-        android:textColor="@android:color/white"
-        android:textStyle="bold" />
+
 
     <!-- Contenedor principal -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:padding="16dp"
-        android:background="@drawable/popup_background">
+        android:background="@color/Color_Secundario"
+        android:padding="16dp">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="vertical"
             android:padding="16dp">
 
             <!-- Etiqueta del nombre -->
@@ -41,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"
                 android:text="Nombre del Hábito:"
-                android:textColor="#000000"
+                android:textColor="@color/Titulos"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -50,27 +39,25 @@
                 android:id="@+id/etHabitName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@android:drawable/editbox_background"
                 android:hint="Ingresa el nombre"
                 android:inputType="text"
-                android:background="@android:drawable/editbox_background"
-                android:padding="12dp"
-                android:layout_marginTop="8dp" />
+                android:padding="12dp" />
 
             <!-- Etiqueta de la descripción -->
             <TextView
                 android:id="@+id/descriptionLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="monospace"
                 android:layout_marginTop="16dp"
+                android:fontFamily="monospace"
                 android:text="Descripción:"
-                android:textColor="#000000"
+                android:textColor="@color/Titulos"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <!-- Caja de texto para la descripción -->
-
-            <!-- Botón para guardar -->
             <EditText
                 android:id="@+id/ehabitDescription"
                 android:layout_width="match_parent"
@@ -85,15 +72,119 @@
                 android:scrollbars="vertical"
                 android:textSize="16sp" />
 
+            <!-- Spinner de frecuencia -->
+            <Spinner
+                android:id="@+id/spinnerFrequency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:entries="@array/frequency_options" />
+
+            <!-- Contenedor de los días de la semana (inicialmente oculto) -->
+            <LinearLayout
+                android:id="@+id/weekDaysLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <CheckBox
+                    android:id="@+id/checkboxMonday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                        android:text="L" />
+
+                <CheckBox
+                    android:id="@+id/checkboxTuesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="M" />
+
+                <CheckBox
+                    android:id="@+id/checkboxWednesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="M" />
+
+                <CheckBox
+                    android:id="@+id/checkboxThursday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="J" />
+
+                <CheckBox
+                    android:id="@+id/checkboxFriday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="V" />
+
+                <CheckBox
+                    android:id="@+id/checkboxSaturday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="S" />
+
+                <CheckBox
+                    android:id="@+id/checkboxSunday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="D" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/Hora"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+            <!-- Botón para definir la hora -->
+            <Button
+                android:id="@+id/btnSelectTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Definir Hora"
+                android:backgroundTint="#4A90E2"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/timeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Seleciona la Hora"
+                android:textColor="@color/Titulos"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/popupCloseButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#4A90E2"
+                android:text="Cancelar"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
             <Button
                 android:id="@+id/btnSaveHabit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:backgroundTint="#4A90E2"
                 android:text="Guardar"
-                android:backgroundTint="@android:color/holo_green_dark"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
+
+
         </LinearLayout>
     </FrameLayout>
 </LinearLayout>

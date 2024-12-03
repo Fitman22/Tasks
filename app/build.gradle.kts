@@ -36,6 +36,7 @@ android {
     }
     buildFeatures {
         compose = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -107,8 +108,8 @@ dependencies {
     // Optional - Integration with RxJava
     implementation("androidx.compose.runtime:runtime-rxjava2")
 
-    // Room dependencies
-    implementation("androidx.room:room-runtime:2.5.0")
-    implementation("androidx.room:room-ktx:2.5.0") // Si usas Kotlin y coroutines
-    kapt("androidx.room:room-compiler:2.5.0") // KAPT para el procesamiento de anotaciones en Kotlin
+    implementation("com.google.code.gson:gson:2.9.0")
+
+    implementation ("androidx.cardview:cardview:1.0.0")
+
 }
